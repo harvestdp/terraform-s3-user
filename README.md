@@ -1,7 +1,7 @@
 ### terraform-s3-user-c5-files
 
 
-A Terraform module that creates a tagged S3 bucket and an IAM user/key with access to the bucket
+A Terraform module that creates a tagged S3 bucket and an IAM user/key with access to the bucket, specifically for Concrete5 website S3 File Storage
 
 
 ## Inputs

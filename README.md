@@ -38,7 +38,7 @@ provider "aws" {
 }
 
 module "s3_user" {
-  source = "github.com/turnerlabs/terraform-s3-user?ref=v2.0"
+  source = "github.com/harvestdp/terraform-s3-user-c5-files?ref=v2.0"
 
   bucket_name = "my-bucket"
 

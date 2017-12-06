@@ -37,20 +37,42 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
 
   policy = <<EOF
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "${aws_iam_user.user.arn}"
-      },
-      "Action": [ "s3:*" ],
-      "Resource": [
-        "${aws_s3_bucket.bucket.arn}",
-        "${aws_s3_bucket.bucket.arn}/*"
-      ]
-    }
-  ]
+    "Version": "2017-12-07",
+    "Statement": [
+        {
+            "Sid": "PublicReadForGetBucketObjects",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "${aws_s3_bucket.bucket.arn}/*"
+        },
+        {
+            "Sid": "HiveProgrammaticAccessGetBucketLocation",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "${aws_iam_user.user.arn}"
+            },
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:ListBucket"
+            ],
+            "Resource": "${aws_s3_bucket.bucket.arn}"
+        },
+        {
+            "Sid": "HiveProgrammaticAccessPutObject",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "${aws_iam_user.user.arn}"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": "${aws_s3_bucket.bucket.arn}/*"
+        }
+    ]
 }
 EOF
 }

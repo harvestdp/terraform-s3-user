@@ -18,6 +18,11 @@ output "bucket_name" {
   value = "${aws_s3_bucket.bucket.id}"
 }
 
+//the s3:// of the bucket
+output "bucket_s3_url" {
+  value = "s3://${aws_s3_bucket.bucket.id}"
+}
+
 //the access key
 output "iam_access_key_id" {
   value = "${aws_iam_access_key.user_keys.id}"

@@ -6,6 +6,9 @@ variable "versioning" {
   default = false
 }
 
+//user name of IAM user
+variable "iam_user_name" {}
+
 //environment
 variable "tag_environment" {}
 
@@ -20,3 +23,4 @@ variable "tag_contact-email" {}
 
 //customer
 variable "tag_customer" {}
+

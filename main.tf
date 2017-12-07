@@ -5,7 +5,7 @@
 
 # we need a service account user
 resource "aws_iam_user" "user" {
-  name = "srv_${var.bucket_name}"
+  name = "${var.iam_user_name}"
 }
 
 # generate keys for service account user
@@ -37,7 +37,7 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
 
   policy = <<EOF
 {
-    "Version": "2017-12-07",
+    "Version": "2012-10-17",
     "Statement": [
         {
             "Sid": "PublicReadForGetBucketObjects",

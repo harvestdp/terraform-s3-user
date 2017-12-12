@@ -22,6 +22,12 @@ resource "aws_s3_bucket" "bucket" {
     enabled = "${var.versioning}"
   }
 
+  cors_rule {
+    allowed_methods = ["GET"]
+    allowed_origins = ["*"]
+    max_age_seconds = 3000
+  }
+
   tags {
     team          = "${var.tag_team}"
     application   = "${var.tag_application}"
